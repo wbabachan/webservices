@@ -1,0 +1,8 @@
+webservices-client/.gradle/
+webservices-client/.idea/
+webservices-client/build/
+
+webservices/.gradle/
+webservices/.idea/
+webservices/build/
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is JAX-WS RI 2.2.9-b130926.1035 svn-revision#5f6196f2b90e9460065a4c2f4e30e065b245e51e. --><xs:schema xmlns:tns="http://www.ourproducts.de" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://www.ourproducts.de">
+
+<xs:element name="addProduct" type="tns:addProduct"></xs:element>
+
+<xs:element name="addProductResponse" type="tns:addProductResponse"></xs:element>
+
+<xs:element name="listAllProducts" type="tns:listAllProducts"></xs:element>
+
+<xs:element name="listAllProductsResponse" type="tns:listAllProductsResponse"></xs:element>
+
+<xs:element name="listProductCategories" type="tns:listProductCategories"></xs:element>
+
+<xs:element name="listProductCategoriesResponse" type="tns:listProductCategoriesResponse"></xs:element>
+
+<xs:complexType name="listProductCategories">
+<xs:sequence></xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listProductCategoriesResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listAllProducts">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listAllProductsResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0" maxOccurs="unbounded"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addProduct">
+<xs:sequence>
+<xs:element name="arg0" type="xs:string" minOccurs="0"></xs:element>
+<xs:element name="arg1" type="xs:string" minOccurs="0"></xs:element>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addProductResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean"></xs:element>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

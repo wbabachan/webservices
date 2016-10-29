@@ -1,0 +1,77 @@
+buildscript{
+    repositories{
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'no.nils:wsdl2java:0.10'
+    }
+}
+
+apply plugin: 'no.nils.wsdl2java'
+
+apply plugin: 'war'
+apply plugin: 'java'    
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/java']
+        }
+        resources {
+            srcDirs = ['src/resources']
+        }       
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'javax.servlet', name: 'javax.servlet-api', version: '3.1.0'
+}
+
+war {
+     webAppDirName = 'src/webapp'
+}
+
+idea {
+    project {
+        jdkName '1.8'
+        languageLevel '1.8'
+        vcs 'Git'
+    }
+    module {
+        excludeDirs += file('buildSrc')
+        excludeDirs += file('build')
+        excludeDirs += file('gradle')
+        excludeDirs += file('.gradle')
+        excludeDirs += file('.idea')
+        excludeDirs += file('.classpath')
+        excludeDirs += file('.project')
+        excludeDirs += file('gradlew')
+        excludeDirs += file('gradlew.bat')
+        downloadJavadoc = true
+        downloadSources = true
+    }
+}
+
+wsdl2java {
+    wsdlsToGenerate = [
+            ['-p','webservices', '-autoNameResolution',"$projectDir/src/resources/wsdl/products.wsdl"]
+    ]
+    generatedWsdlDir = file("$projectDir/src/java")
+    wsdlDir = file("$projectDir/src/resources/wsdl")
+    locale = Locale.GERMANY
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '3.1'
+}
+
